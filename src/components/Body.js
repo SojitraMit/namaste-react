@@ -1,6 +1,7 @@
 import RestaurantCards from "./RestaurantCards";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 // Always use useState in function component.  
@@ -53,10 +54,13 @@ const Body = () => {
       > Top rated restaurant</button>
       </div>
       
-      <div className="res-container" >
-        {filterResList.map((restaurant, index) => (
-          <RestaurantCards key={restaurant.info.id} resData={restaurant} />
-        ))}
+      <div className="res-container" > 
+        {filterResList.map((restaurant) => (
+      <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
+        <RestaurantCards resData={restaurant} />
+      </Link>
+))}
+
       </div>
     </div>
   );

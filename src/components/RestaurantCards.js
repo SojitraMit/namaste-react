@@ -6,7 +6,7 @@ const styleCard = {
 };
 
 const RestaurantCards = ({ resData }) => {
-  const { name, cuisines, avgRating, deliveryTime, costForTwo, cloudinaryImageId } = resData.info;
+  const { name, cuisines, avgRating, sla, costForTwo, cloudinaryImageId } = resData.info;
   return (
     <div className="res-card" style={styleCard}>
       <div className="res-logo">
@@ -20,9 +20,9 @@ const RestaurantCards = ({ resData }) => {
       <h6 className="cuisine">{cuisines.join(", ")}</h6>
       <div id="rating">
         <h4 className="star">{avgRating} stars</h4>
-        <h4 className="time">{deliveryTime} mins</h4>
+        <h4 className="time">{sla.deliveryTime} mins</h4>
       </div>
-      <h5 className="price">₹{costForTwo / 100} FOR TWO</h5>    
+      <h5 className="price">{costForTwo} </h5>    
       <h6 className="off">{resData.info.aggregatedDiscountInfoV2?.header || "No Offer"}</h6>
     </div>
   );
