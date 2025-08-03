@@ -43,9 +43,9 @@
     width: 190px;
     padding: 5px;
     margin-top: 0px;
-    margin: 5px;
-
+    margin: 5px; 
 }
+
 
 .res-card:hover{
     border: 1px solid black;
