@@ -12,15 +12,26 @@ const RestaurantMenu = () => {
   if (!resInfo) return <Shimmer />;
 
   // Extract restaurant name
-  const resName = resInfo[2]?.card?.card?.info?.name || "Restaurant";
+  const res = resInfo[2]?.card?.card?.info || "Restaurant";
+  console.log(resInfo[2]?.card?.card?.info);
 
   // Extract itemCards array safely
   const itemCards =
     resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards || [];
 
+  const list=resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  const cetegory=list.filter((c)=> 
+    c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+    
+
   return (
-    <div className="menu">
-      <h1>{resName}</h1>
+    <div className="text-center">
+      <h1 className="font-bold m-6 text-2xl">{res.name}</h1>
+      {res.cuisines.map((cus)=>(
+        
+        <li className="flex text-center" key={cus}>{cus} </li>
+      ))}
       <h2>Menu</h2>
       <ul>
         {itemCards.map((item) => (
